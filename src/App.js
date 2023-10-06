@@ -27,7 +27,7 @@ function App() {
       const animation = Math.round((roundedCurrent / roundedDuration) * 100 )
       setSongInfo({...songInfo, currentTime: current, duration, animationPercentage: animation})
      };
-
+  
      useEffect(() => {
       if (isPlaying) {
           const playPromise = audioRef.current.play();
@@ -40,6 +40,8 @@ function App() {
           }
       }
   }, [currentSong, isPlaying, audioRef]);
+
+
 
   const skipTrackHandler = (direction) => {
     let currentIndex =songs.findIndex((song) => song.id === currentSong.id);
