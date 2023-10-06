@@ -27,6 +27,41 @@ function App() {
       const animation = Math.round((roundedCurrent / roundedDuration) * 100 )
       setSongInfo({...songInfo, currentTime: current, duration, animationPercentage: animation})
      };
+
+     useEffect(() => {
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: currentSong.name,
+          artist: currentSong.artist,
+          artwork: [
+            { src: currentSong.cover, sizes: '96x96', type: 'image/png' },
+            { src: currentSong.cover, sizes: '128x128', type: 'image/png' },
+            { src: currentSong.cover, sizes: '192x192', type: 'image/png' },
+            { src: currentSong.cover, sizes: '256x256', type: 'image/png' },
+            { src: currentSong.cover, sizes: '384x384', type: 'image/png' },
+            { src: currentSong.cover, sizes: '512x512', type: 'image/png' },
+          ]
+        });
+      }
+   }, [currentSong]);
+
+    useEffect(() => {
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.setActionHandler('play', () => {
+          setIsPlaying(true);
+        });
+        navigator.mediaSession.setActionHandler('pause', () => {
+          setIsPlaying(false);
+        });
+        navigator.mediaSession.setActionHandler('previoustrack', () => {
+          skipTrackHandler('skip-back');
+        });
+        navigator.mediaSession.setActionHandler('nexttrack', () => {
+          skipTrackHandler('skip-forward');
+        });
+      }
+    }, []);
+ 
   
      useEffect(() => {
       if (isPlaying) {
