@@ -67,6 +67,10 @@ input[type="range"]::-webkit-slider-thumb {
         width: 90%;
     }
     .player-control {
-        width: 80%;
+        padding: 2rem;
+        width: 70%;
+    }
+    .player {
+        margin-top: -2.5rem;
     }
 }
