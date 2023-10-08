@@ -31,20 +31,22 @@ function App() {
      //To Show minis and names in locked phone screens
 
      useEffect(() => {
+      console.log(currentSong.cover);
       if ('mediaSession' in navigator) {
         navigator.mediaSession.metadata = new MediaMetadata({
           title: currentSong.name,
           artist: currentSong.artist,
           artwork: [
-            { src: currentSong.cover, sizes: '96x96', type: 'image/jpg' },
-            { src: currentSong.cover, sizes: '128x128', type: 'image/jpg' },
-            { src: currentSong.cover, sizes: '192x192', type: 'image/jpg' },
-            { src: currentSong.cover, sizes: '256x256', type: 'image/jpg' },
-            { src: currentSong.cover, sizes: '384x384', type: 'image/jpg' },
-            { src: currentSong.cover, sizes: '512x512', type: 'image/jpg' },
+            { src: `${window.location.origin}${currentSong.cover}`, sizes: '96x96', type: 'image/jpg' },
+            { src: `${window.location.origin}${currentSong.cover}`, sizes: '128x128', type: 'image/jpg' },
+            { src: `${window.location.origin}${currentSong.cover}`, sizes: '192x192', type: 'image/jpg' },
+            { src: `${window.location.origin}${currentSong.cover}`, sizes: '256x256', type: 'image/jpg' },
+            { src: `${window.location.origin}${currentSong.cover}`, sizes: '384x384', type: 'image/jpg' },
+            { src: `${window.location.origin}${currentSong.cover}`, sizes: '512x512', type: 'image/jpg' },
           ]
         });
       }
+      console.log(currentSong.cover)
    }, [currentSong]);
 
     useEffect(() => {

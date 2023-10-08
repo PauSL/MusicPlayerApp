@@ -4,10 +4,11 @@ nav {
     justify-content: space-around;
     align-items: center;
     button{
-        background: transparent;
+        background: black;
         border: none;
+        color: white;
+        border-radius: 15px;
         cursor: pointer;
-        border: 2px solid rgb(65, 65 ,65);
         padding: 1rem;
         transition: all 0.3s ease;
         &:hover{
